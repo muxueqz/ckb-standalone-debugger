@@ -4,7 +4,7 @@ LABEL maintainer="muxueqz <zhangmingyuan240@gmail.com>"
 WORKDIR /app
 COPY ./ .
 
-RUN cargo build --release && cp -v ./bins/target/release/ckb-debugger /opt/
+RUN cd bins && cargo build --release
 
 FROM ubuntu:bionic
-COPY --from=builder /opt/ckb-debugger /opt/debugger/
+COPY --from=builder /app/bin/target/release/ckb-debugger /opt/debugger/
