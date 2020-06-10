@@ -1,10 +1,10 @@
 FROM nervos/ckb-docker-builder:bionic-rust-1.41.0 as builder
 LABEL maintainer="muxueqz <zhangmingyuan240@gmail.com>"
 
-WORKDIR /ckb
+WORKDIR /app
 COPY ./ .
 
 RUN cargo build --release
 
 FROM ubuntu:bionic
-COPY --from=builder ./bins/ /opt/debugger
+COPY --from=builder /app/bins/target/release/ckb-debugger /opt/debugger/
