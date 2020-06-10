@@ -7,4 +7,4 @@ COPY ./ .
 RUN cd bins && cargo build --release
 
 FROM ubuntu:bionic
-COPY --from=builder /app/bin/target/release/ckb-debugger /opt/debugger/
+COPY --from=builder /app/bins/target/release/ckb-debugger /opt/debugger/
